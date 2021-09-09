@@ -124,7 +124,7 @@ function SearchChallenge(props) {
   };
 
   return (
-    <Container>
+    <SearchContentsContainer>
       <CategoryContainer>
         <CategoryLeftBox>
           <CategoryTitle>카테고리</CategoryTitle>
@@ -195,12 +195,8 @@ function SearchChallenge(props) {
               fontWeight="500"
               border="none"
               onClick={(e) => allFilterClickListener(e, "tags")}
-              bg={
-                tagState.passingTags.tags[1] === true ? "mainGreen" : "white"
-              }
-              color={
-                tagState.passingTags.tags[1] === true ? "white" : "black"
-              }
+              bg={tagState.passingTags.tags[1] === true ? "mainGreen" : "white"}
+              color={tagState.passingTags.tags[1] === true ? "white" : "black"}
             >
               1주
             </Tag>
@@ -208,12 +204,8 @@ function SearchChallenge(props) {
               fontWeight="500"
               border="none"
               onClick={(e) => allFilterClickListener(e, "tags")}
-              bg={
-                tagState.passingTags.tags[2] === true ? "mainGreen" : "white"
-              }
-              color={
-                tagState.passingTags.tags[2] === true ? "white" : "black"
-              }
+              bg={tagState.passingTags.tags[2] === true ? "mainGreen" : "white"}
+              color={tagState.passingTags.tags[2] === true ? "white" : "black"}
             >
               2주
             </Tag>
@@ -221,12 +213,8 @@ function SearchChallenge(props) {
               fontWeight="500"
               border="none"
               onClick={(e) => allFilterClickListener(e, "tags")}
-              bg={
-                tagState.passingTags.tags[3] === true ? "mainGreen" : "white"
-              }
-              color={
-                tagState.passingTags.tags[3] === true ? "white" : "black"
-              }
+              bg={tagState.passingTags.tags[3] === true ? "mainGreen" : "white"}
+              color={tagState.passingTags.tags[3] === true ? "white" : "black"}
             >
               3주
             </Tag>
@@ -234,12 +222,8 @@ function SearchChallenge(props) {
               fontWeight="500"
               border="none"
               onClick={(e) => allFilterClickListener(e, "tags")}
-              bg={
-                tagState.passingTags.tags[4] === true ? "mainGreen" : "white"
-              }
-              color={
-                tagState.passingTags.tags[4] === true ? "white" : "black"
-              }
+              bg={tagState.passingTags.tags[4] === true ? "mainGreen" : "white"}
+              color={tagState.passingTags.tags[4] === true ? "white" : "black"}
             >
               4주 이상
             </Tag>
@@ -278,7 +262,7 @@ function SearchChallenge(props) {
           </TagBox>
         </CategoryRightBox>
       </CategoryContainer>
-      <BoxContainer>
+      <ResultContentsContainer>
         <InfinityScroll
           callNext={callNext}
           is_next={paging.next ? true : false}
@@ -358,12 +342,12 @@ function SearchChallenge(props) {
               );
             })}
         </InfinityScroll>
-      </BoxContainer>
-    </Container>
+      </ResultContentsContainer>
+    </SearchContentsContainer>
   );
 }
 
-const Container = styled.div`
+const SearchContentsContainer = styled.container`
   width: 100%;
   height: 100%;
   display: flex;
@@ -437,10 +421,9 @@ const TagBox = styled.div`
   cursor: pointer;
 `;
 
-const BoxContainer = styled.div`
+const ResultContentsContainer = styled.container`
   width: 66.67vw;
   display: grid;
-  /* justify-content: center; */
   grid-template-rows: repeat(1, auto);
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
