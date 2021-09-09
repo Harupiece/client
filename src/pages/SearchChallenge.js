@@ -12,7 +12,7 @@ function SearchChallenge(props) {
   const searchList = useSelector((state) => state.main.search);
   const { paging, is_loading } = useSelector((state) => state.main);
 
-  const [searchState, setSearchState] = useState({
+  const [tagState, setTagState] = useState({
     passingTags: {
       categoryName: {
         EXERCISE: false,
@@ -39,7 +39,7 @@ function SearchChallenge(props) {
       challengeProgress: "",
     };
 
-    const { categoryName, tags, progress } = searchState.passingTags;
+    const { categoryName, tags, progress } = tagState.passingTags;
     for (let categoryKey in categoryName) {
       if (categoryName[categoryKey])
         collectedTrueKeys.categoryName = categoryKey;
@@ -51,7 +51,7 @@ function SearchChallenge(props) {
       if (progress[progressKey]) collectedTrueKeys.progress = progressKey;
     }
     return collectedTrueKeys;
-  }, [searchState.passingTags]);
+  }, [tagState.passingTags]);
 
   const allFilterClickListener = (e, filterProp) => {
     let name = e.target.textContent;
@@ -77,11 +77,11 @@ function SearchChallenge(props) {
       name = e.target.textContent;
     }
 
-    setSearchState({
+    setTagState({
       passingTags: {
-        ...searchState.passingTags,
+        ...tagState.passingTags,
         [filterProp]: {
-          [name]: !searchState.passingTags[filterProp][name],
+          [name]: !tagState.passingTags[filterProp][name],
         },
       },
     });
@@ -96,7 +96,7 @@ function SearchChallenge(props) {
         searchActions.searchFilterDB(filteredCategory(), keyWord)
       );
     }
-  }, [dispatch, filteredCategory, keyWord, searchState]);
+  }, [dispatch, filteredCategory, keyWord, tagState]);
 
   // 챌린지 기간
   const date = searchList?.map((list) => {
@@ -143,12 +143,12 @@ function SearchChallenge(props) {
                 allFilterClickListener(e, "categoryName");
               }}
               bg={
-                searchState.passingTags.categoryName.NODRINKNOSMOKE === true
+                tagState.passingTags.categoryName.NODRINKNOSMOKE === true
                   ? "mainGreen"
                   : "white"
               }
               color={
-                searchState.passingTags.categoryName.NODRINKNOSMOKE === true
+                tagState.passingTags.categoryName.NODRINKNOSMOKE === true
                   ? "white"
                   : "black"
               }
@@ -160,12 +160,12 @@ function SearchChallenge(props) {
               border="none"
               onClick={(e) => allFilterClickListener(e, "categoryName")}
               bg={
-                searchState.passingTags.categoryName.LIVINGHABITS === true
+                tagState.passingTags.categoryName.LIVINGHABITS === true
                   ? "mainGreen"
                   : "white"
               }
               color={
-                searchState.passingTags.categoryName.LIVINGHABITS === true
+                tagState.passingTags.categoryName.LIVINGHABITS === true
                   ? "white"
                   : "black"
               }
@@ -177,12 +177,12 @@ function SearchChallenge(props) {
               border="none"
               onClick={(e) => allFilterClickListener(e, "categoryName")}
               bg={
-                searchState.passingTags.categoryName.EXERCISE === true
+                tagState.passingTags.categoryName.EXERCISE === true
                   ? "mainGreen"
                   : "white"
               }
               color={
-                searchState.passingTags.categoryName.EXERCISE === true
+                tagState.passingTags.categoryName.EXERCISE === true
                   ? "white"
                   : "black"
               }
@@ -196,10 +196,10 @@ function SearchChallenge(props) {
               border="none"
               onClick={(e) => allFilterClickListener(e, "tags")}
               bg={
-                searchState.passingTags.tags[1] === true ? "mainGreen" : "white"
+                tagState.passingTags.tags[1] === true ? "mainGreen" : "white"
               }
               color={
-                searchState.passingTags.tags[1] === true ? "white" : "black"
+                tagState.passingTags.tags[1] === true ? "white" : "black"
               }
             >
               1주
@@ -209,10 +209,10 @@ function SearchChallenge(props) {
               border="none"
               onClick={(e) => allFilterClickListener(e, "tags")}
               bg={
-                searchState.passingTags.tags[2] === true ? "mainGreen" : "white"
+                tagState.passingTags.tags[2] === true ? "mainGreen" : "white"
               }
               color={
-                searchState.passingTags.tags[2] === true ? "white" : "black"
+                tagState.passingTags.tags[2] === true ? "white" : "black"
               }
             >
               2주
@@ -222,10 +222,10 @@ function SearchChallenge(props) {
               border="none"
               onClick={(e) => allFilterClickListener(e, "tags")}
               bg={
-                searchState.passingTags.tags[3] === true ? "mainGreen" : "white"
+                tagState.passingTags.tags[3] === true ? "mainGreen" : "white"
               }
               color={
-                searchState.passingTags.tags[3] === true ? "white" : "black"
+                tagState.passingTags.tags[3] === true ? "white" : "black"
               }
             >
               3주
@@ -235,10 +235,10 @@ function SearchChallenge(props) {
               border="none"
               onClick={(e) => allFilterClickListener(e, "tags")}
               bg={
-                searchState.passingTags.tags[4] === true ? "mainGreen" : "white"
+                tagState.passingTags.tags[4] === true ? "mainGreen" : "white"
               }
               color={
-                searchState.passingTags.tags[4] === true ? "white" : "black"
+                tagState.passingTags.tags[4] === true ? "white" : "black"
               }
             >
               4주 이상
@@ -250,12 +250,12 @@ function SearchChallenge(props) {
               onClick={(e) => allFilterClickListener(e, "progress")}
               border="none"
               bg={
-                searchState.passingTags.progress[1] === true
+                tagState.passingTags.progress[1] === true
                   ? "mainGreen"
                   : "white"
               }
               color={
-                searchState.passingTags.progress[1] === true ? "white" : "black"
+                tagState.passingTags.progress[1] === true ? "white" : "black"
               }
             >
               진행 예정
@@ -265,12 +265,12 @@ function SearchChallenge(props) {
               onClick={(e) => allFilterClickListener(e, "progress")}
               border="none"
               bg={
-                searchState.passingTags.progress[2] === true
+                tagState.passingTags.progress[2] === true
                   ? "mainGreen"
                   : "white"
               }
               color={
-                searchState.passingTags.progress[2] === true ? "white" : "black"
+                tagState.passingTags.progress[2] === true ? "white" : "black"
               }
             >
               진행중
