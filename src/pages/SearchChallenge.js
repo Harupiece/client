@@ -347,7 +347,7 @@ function SearchChallenge(props) {
   );
 }
 
-const SearchContentsContainer = styled.container`
+const SearchContentsContainer = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
@@ -421,7 +421,7 @@ const TagBox = styled.div`
   cursor: pointer;
 `;
 
-const ResultContentsContainer = styled.container`
+const ResultContentsContainer = styled.div`
   width: 66.67vw;
   display: grid;
   grid-template-rows: repeat(1, auto);

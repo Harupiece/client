@@ -358,7 +358,6 @@ const Contain = styled.div`
   flex-direction: column;
   width: 49.48vw;
   height: 54vh;
-  padding-top: 20vh;
   border-radius: 8px;
   border: 1px solid ${({ theme }) => theme.colors.lightGray};
   font-size: ${({ theme }) => theme.fontSizes.xl};
